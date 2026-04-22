@@ -58,7 +58,7 @@ class ViTBackbone(nn.Module):
         super().__init__()
         self.body = AutoModel.from_pretrained(name, trust_remote_code=False)
 
-        self.out_channels = self.body.config.hidden_size
+        self.num_channels = self.body.config.hidden_size
         self.patch_size = self.body.config.patch_size
         self.input_size_multiple = int(self.patch_size)
         self.num_register_tokens = getattr(self.body.config, "num_register_tokens", 0)
